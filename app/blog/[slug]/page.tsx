@@ -1,7 +1,7 @@
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Calendar, Clock, ArrowLeft, Share2 } from "lucide-react"
-import Link from "next/link"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Calendar, Clock, ArrowLeft, Share2 } from "lucide-react";
+import Link from "next/link";
 
 // Mock blog post data - in a real app, this would come from a CMS or markdown files
 const blogPost = {
@@ -61,7 +61,7 @@ Next.js 15 represents a significant step forward in React development. The impro
 
 Whether you're building a simple blog or a complex web application, Next.js 15 provides the tools and performance you need to succeed.
   `,
-}
+};
 
 export default function BlogPostPage() {
   return (
@@ -71,7 +71,10 @@ export default function BlogPostPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div>
-              <Link href="/" className="text-2xl font-bold text-slate-900 dark:text-white">
+              <Link
+                href="/"
+                className="text-2xl font-bold text-slate-900 dark:text-white"
+              >
                 My Blog
               </Link>
               <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
@@ -148,8 +151,12 @@ export default function BlogPostPage() {
                   AB
                 </div>
                 <div>
-                  <p className="font-medium text-slate-900 dark:text-white">Author Name</p>
-                  <p className="text-sm text-slate-600 dark:text-slate-400">Software Engineer</p>
+                  <p className="font-medium text-slate-900 dark:text-white">
+                    Author Name
+                  </p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">
+                    Software Engineer
+                  </p>
                 </div>
               </div>
               <Button variant="outline" size="sm">
@@ -161,7 +168,11 @@ export default function BlogPostPage() {
 
           {/* Article Content */}
           <div className="prose prose-slate dark:prose-invert prose-lg max-w-none">
-            <div dangerouslySetInnerHTML={{ __html: blogPost.content.replace(/\n/g, "<br />") }} />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: blogPost.content.replace(/\n/g, "<br />"),
+              }}
+            />
           </div>
 
           {/* Article Footer */}
@@ -172,17 +183,25 @@ export default function BlogPostPage() {
                   AB
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 dark:text-white mb-2">About the Author</h3>
+                  <h3 className="font-bold text-slate-900 dark:text-white mb-2">
+                    About the Author
+                  </h3>
                   <p className="text-slate-600 dark:text-slate-300 mb-4">
-                    {"I'm a full-stack developer passionate about building great software and sharing knowledge. "}
-                    {"When I'm not coding, you'll find me writing blog posts or contributing to open source projects."}
+                    {
+                      "I'm a full-stack developer passionate about building great software and sharing knowledge. "
+                    }
+                    {
+                      "When I'm not coding, you'll find me writing blog posts or contributing to open source projects."
+                    }
                   </p>
                   <div className="flex gap-2">
                     <Button variant="outline" size="sm" asChild>
                       <Link href="/about">More About Me</Link>
                     </Button>
                     <Button variant="outline" size="sm" asChild>
-                      <a href="https://twitter.com/yourusername">Follow on Twitter</a>
+                      <a href="https://twitter.com/yourusername">
+                        Follow on Twitter
+                      </a>
                     </Button>
                   </div>
                 </div>
@@ -192,5 +211,23 @@ export default function BlogPostPage() {
         </article>
       </main>
     </div>
-  )
+  );
+}
+
+// Import your blog posts data
+const blogPosts = [
+  {
+    slug: "getting-started-nextjs-15",
+    // ...other fields
+  },
+  {
+    slug: "art-of-clean-code",
+    // ...other fields
+  },
+  // ...add all slugs here
+];
+
+// Required for static export
+export function generateStaticParams() {
+  return blogPosts.map((post) => ({ slug: post.slug }));
 }
