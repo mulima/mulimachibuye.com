@@ -1,49 +1,71 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { ExternalLink, Download, Calendar, MapPin, Award, BookOpen, Users, Presentation } from "lucide-react"
-import Link from "next/link"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  ExternalLink,
+  Download,
+  Calendar,
+  MapPin,
+  Award,
+  BookOpen,
+  Users,
+  Presentation,
+} from "lucide-react";
+import Link from "next/link";
 
 // Mock academic data - replace with your actual academic work
 const publications = [
   {
     id: 1,
-    title: "Machine Learning Approaches for Distributed System Optimization",
-    authors: ["Your Name", "Dr. Jane Smith", "Dr. John Doe"],
-    venue: "IEEE Transactions on Parallel and Distributed Systems",
-    year: "2024",
+    title:
+      "A Remote Sensor Network using Android Things and Cloud Computing for the Food Reserve Agency in Zambia",
+    authors: ["Mulima Chibuye", "Dr. Jackson Phiri"],
+    venue:
+      "International Journal of Advanced Computer Science and Applications(IJACSA), Volume 8 Issue 11",
+    year: "2017",
     type: "Journal Article",
     status: "Published",
     abstract:
       "This paper presents novel machine learning approaches for optimizing distributed systems performance, focusing on load balancing and resource allocation strategies.",
-    doi: "10.1109/TPDS.2024.1234567",
-    pdfUrl: "#",
-    citations: 12,
+    doi: "10.14569/IJACSA.2017.081150",
+    pdfUrl:
+      "https://thesai.org/Downloads/Volume8No11/Paper_50-A_Remote_Sensor_Network_using_Android_Things.pdf",
+    citations: 31,
   },
   {
     id: 2,
-    title: "Scalable Web Architecture Patterns: A Comparative Study",
-    authors: ["Your Name", "Dr. Alice Johnson"],
-    venue: "ACM Computing Surveys",
+    title:
+      "Current Trends in Machine-Based Predictive Analysis in Agriculture for Better Crop Management - A Systematic Review",
+    authors: ["Mulima Chibuye", "Dr. Jackson Phiri"],
+    venue: "Zambia Information Communication Technology (ICT) Journal",
     year: "2023",
     type: "Journal Article",
     status: "Published",
     abstract:
       "A comprehensive analysis of modern web architecture patterns and their scalability characteristics in cloud-native environments.",
-    doi: "10.1145/3579834.3579835",
-    pdfUrl: "#",
-    citations: 28,
+    doi: "10.33260/zictjournal.v7i1.147",
+    pdfUrl:
+      "https://ictjournal.icict.org.zm/index.php/zictjournal/article/view/147/67",
+    citations: 3,
   },
   {
     id: 3,
-    title: "Real-time Data Processing in Edge Computing Environments",
-    authors: ["Your Name", "Dr. Bob Wilson", "Dr. Carol Brown"],
-    venue: "International Conference on Distributed Computing Systems (ICDCS)",
+    title:
+      "Towards Artificial General Intelligence - A Survey of Hyperdimensional Computing and Vector Symbolic Architectures with Quantum Computing for Multivariate Predictions",
+    authors: ["Mulima Chibuye", "Dr. Jackson Phiri"],
+    venue: "Zambia Information Communication Technology (ICT) Journal",
     year: "2023",
-    type: "Conference Paper",
+    type: "Journal Article",
     status: "Published",
     abstract:
-      "We propose a novel framework for real-time data processing at the edge, reducing latency and improving system responsiveness.",
+      "To achieve true artificial intelligence would be to mimic the human brain. " +
+      "Some have espoused that current systems that we call AI today are nothing more than if-else statements. There are other arguments that state that indeed, the act of decision making itself is a bunch of nested if-else statements. However, we note that the human brain and through processes that are far more complicated than that has levels of cognition that far outweigh those of any machines that have been made today. While computing systems perform better at certain tasks than human beings do, they remain inherently specific. Human minds are generally creative and knowledge making entities. In this paper, we explore the current progress made towards achieving Artificial General Intelligence and look at it from the angle of Hyperdimensional Computing and Vector Symbolic Architectures both running with the power of quantum computing. We explain how the achievement of AGI will lead to a much more sustainable form of industrial development as has been touted through advancements towards the Fourth Industrial Revolution.",
     doi: "10.1109/ICDCS.2023.1234567",
     pdfUrl: "#",
     citations: 15,
@@ -60,7 +82,7 @@ const publications = [
       "This work presents a decentralized identity management system for IoT devices using blockchain technology to ensure security and privacy.",
     pdfUrl: "#",
   },
-]
+];
 
 const researchProjects = [
   {
@@ -99,7 +121,7 @@ const researchProjects = [
     technologies: ["C++", "Rust", "OpenSSL", "NIST PQC"],
     status: "Ongoing",
   },
-]
+];
 
 const presentations = [
   {
@@ -129,41 +151,33 @@ const presentations = [
     type: "Invited Talk",
     slidesUrl: "#",
   },
-]
+];
 
 const education = [
   {
-    degree: "Ph.D. in Computer Science",
-    institution: "Stanford University",
-    location: "Stanford, CA",
-    duration: "2020 - 2024",
-    thesis: "Scalable Machine Learning Systems for Distributed Computing Environments",
-    advisor: "Dr. Jane Smith",
-    gpa: "3.9/4.0",
-  },
-  {
     degree: "M.S. in Computer Science",
-    institution: "University of California, Berkeley",
-    location: "Berkeley, CA",
-    duration: "2018 - 2020",
-    thesis: "Performance Optimization in Cloud-Native Applications",
-    advisor: "Dr. John Doe",
+    institution: "University of Zambia, Lusaka",
+    location: "Lusaka, ZM",
+    duration: "2016 - 2019",
+    thesis:
+      "A Remote Sensor Network using Android Things and Cloud Computing for the Food Reserve Agency in Zambia",
+    advisor: "Prof Jackson Phiri",
     gpa: "3.8/4.0",
   },
   {
     degree: "B.S. in Computer Engineering",
-    institution: "Massachusetts Institute of Technology",
-    location: "Cambridge, MA",
-    duration: "2014 - 2018",
+    institution: "University of Zambia",
+    location: "Lusaka, ZM",
+    duration: "2004 - 2008",
     honors: "Summa Cum Laude, Phi Beta Kappa",
-    gpa: "3.9/4.0",
   },
-]
+];
 
 const awards = [
   {
     title: "Best Paper Award",
-    organization: "IEEE International Conference on Distributed Computing Systems",
+    organization:
+      "IEEE International Conference on Distributed Computing Systems",
     year: "2024",
     description: "For outstanding contribution to distributed systems research",
   },
@@ -171,7 +185,8 @@ const awards = [
     title: "NSF Graduate Research Fellowship",
     organization: "National Science Foundation",
     year: "2021-2024",
-    description: "Prestigious fellowship supporting graduate research in computer science",
+    description:
+      "Prestigious fellowship supporting graduate research in computer science",
   },
   {
     title: "Outstanding Graduate Student Award",
@@ -183,9 +198,10 @@ const awards = [
     title: "Google PhD Fellowship",
     organization: "Google Research",
     year: "2022-2023",
-    description: "Fellowship supporting research in distributed systems and machine learning",
+    description:
+      "Fellowship supporting research in distributed systems and machine learning",
   },
-]
+];
 
 export default function AcademicsPage() {
   return (
@@ -195,7 +211,10 @@ export default function AcademicsPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div>
-              <Link href="/" className="text-2xl font-bold text-slate-900 dark:text-white">
+              <Link
+                href="/"
+                className="text-2xl font-bold text-slate-900 dark:text-white"
+              >
                 My Blog
               </Link>
               <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
@@ -215,7 +234,10 @@ export default function AcademicsPage() {
               >
                 About
               </Link>
-              <Link href="/academics" className="text-slate-900 dark:text-white font-medium">
+              <Link
+                href="/academics"
+                className="text-slate-900 dark:text-white font-medium"
+              >
                 Academics
               </Link>
               <Link
@@ -232,10 +254,13 @@ export default function AcademicsPage() {
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <section className="mb-16 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">Academic Work</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+            Academic Work
+          </h1>
           <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            My research focuses on distributed systems, machine learning, and edge computing. Here you'll find my
-            publications, research projects, and academic contributions.
+            My research focuses on distributed systems, machine learning, and
+            edge computing. Here you'll find my publications, research projects,
+            and academic contributions.
           </p>
         </section>
 
@@ -243,22 +268,39 @@ export default function AcademicsPage() {
         <section className="mb-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">{publications.length}</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Publications</div>
+              <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                {publications.length}
+              </div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">
+                Publications
+              </div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-green-600 dark:text-green-400">
-                {publications.reduce((sum, pub) => sum + (pub.citations || 0), 0)}
+                {publications.reduce(
+                  (sum, pub) => sum + (pub.citations || 0),
+                  0
+                )}
               </div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Citations</div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">
+                Citations
+              </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">{researchProjects.length}</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Research Projects</div>
+              <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">
+                {researchProjects.length}
+              </div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">
+                Research Projects
+              </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600 dark:text-orange-400">{awards.length}</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Awards</div>
+              <div className="text-3xl font-bold text-orange-600 dark:text-orange-400">
+                {awards.length}
+              </div>
+              <div className="text-sm text-slate-600 dark:text-slate-400">
+                Awards
+              </div>
             </div>
           </div>
         </section>
@@ -290,7 +332,10 @@ export default function AcademicsPage() {
                         </div>
                       </div>
                     </div>
-                    <Badge variant="outline" className="text-green-700 border-green-300">
+                    <Badge
+                      variant="outline"
+                      className="text-green-700 border-green-300"
+                    >
                       GPA: {edu.gpa}
                     </Badge>
                   </div>
@@ -331,19 +376,34 @@ export default function AcademicsPage() {
               <Card key={pub.id} className="border-l-4 border-l-green-500">
                 <CardHeader>
                   <div className="flex justify-between items-start mb-2">
-                    <Badge variant={pub.status === "Published" ? "default" : "secondary"}>{pub.status}</Badge>
+                    <Badge
+                      variant={
+                        pub.status === "Published" ? "default" : "secondary"
+                      }
+                    >
+                      {pub.status}
+                    </Badge>
                     <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
                       <Badge variant="outline">{pub.type}</Badge>
                       <span>{pub.year}</span>
-                      {pub.citations && <span>• {pub.citations} citations</span>}
+                      {pub.citations && (
+                        <span>• {pub.citations} citations</span>
+                      )}
                     </div>
                   </div>
-                  <CardTitle className="text-xl leading-tight">{pub.title}</CardTitle>
+                  <CardTitle className="text-xl leading-tight">
+                    {pub.title}
+                  </CardTitle>
                   <CardDescription>
                     <div className="mb-2">
                       <span className="font-medium">Authors: </span>
                       {pub.authors.map((author, index) => (
-                        <span key={index} className={author === "Your Name" ? "font-semibold" : ""}>
+                        <span
+                          key={index}
+                          className={
+                            author === "Your Name" ? "font-semibold" : ""
+                          }
+                        >
                           {author}
                           {index < pub.authors.length - 1 ? ", " : ""}
                         </span>
@@ -353,21 +413,31 @@ export default function AcademicsPage() {
                       <span className="font-medium">Published in: </span>
                       <span className="italic">{pub.venue}</span>
                     </div>
-                    <p className="text-slate-600 dark:text-slate-300">{pub.abstract}</p>
+                    <p className="text-slate-600 dark:text-slate-300">
+                      {pub.abstract}
+                    </p>
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex gap-2">
                     {pub.doi && (
                       <Button variant="outline" size="sm" asChild>
-                        <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={`https://doi.org/${pub.doi}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           <ExternalLink className="w-4 h-4 mr-2" />
                           DOI
                         </a>
                       </Button>
                     )}
                     <Button variant="outline" size="sm" asChild>
-                      <a href={pub.pdfUrl} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={pub.pdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <Download className="w-4 h-4 mr-2" />
                         PDF
                       </a>
@@ -390,11 +460,21 @@ export default function AcademicsPage() {
               <Card key={project.id} className="border-l-4 border-l-purple-500">
                 <CardHeader>
                   <div className="flex justify-between items-start mb-2">
-                    <Badge variant={project.status === "Ongoing" ? "default" : "secondary"}>{project.status}</Badge>
-                    <span className="text-sm text-slate-600 dark:text-slate-400">{project.duration}</span>
+                    <Badge
+                      variant={
+                        project.status === "Ongoing" ? "default" : "secondary"
+                      }
+                    >
+                      {project.status}
+                    </Badge>
+                    <span className="text-sm text-slate-600 dark:text-slate-400">
+                      {project.duration}
+                    </span>
                   </div>
                   <CardTitle className="text-xl">{project.title}</CardTitle>
-                  <CardDescription className="mb-4">{project.description}</CardDescription>
+                  <CardDescription className="mb-4">
+                    {project.description}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div>
@@ -407,7 +487,9 @@ export default function AcademicsPage() {
                   </div>
                   <div>
                     <span className="font-medium text-sm">Collaborators: </span>
-                    <span className="text-sm">{project.collaborators.join(", ")}</span>
+                    <span className="text-sm">
+                      {project.collaborators.join(", ")}
+                    </span>
                   </div>
                   <div>
                     <span className="font-medium text-sm">Technologies: </span>
@@ -459,7 +541,11 @@ export default function AcademicsPage() {
                       </CardDescription>
                     </div>
                     <Button variant="outline" size="sm" asChild>
-                      <a href={pres.slidesUrl} target="_blank" rel="noopener noreferrer">
+                      <a
+                        href={pres.slidesUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <Download className="w-4 h-4 mr-2" />
                         Slides
                       </a>
@@ -482,13 +568,18 @@ export default function AcademicsPage() {
               <Card key={index} className="border-l-4 border-l-yellow-500">
                 <CardHeader>
                   <div className="flex justify-between items-start mb-2">
-                    <Badge variant="outline" className="text-yellow-700 border-yellow-300">
+                    <Badge
+                      variant="outline"
+                      className="text-yellow-700 border-yellow-300"
+                    >
                       {award.year}
                     </Badge>
                   </div>
                   <CardTitle className="text-lg">{award.title}</CardTitle>
                   <CardDescription>
-                    <div className="font-medium text-slate-700 dark:text-slate-300 mb-2">{award.organization}</div>
+                    <div className="font-medium text-slate-700 dark:text-slate-300 mb-2">
+                      {award.organization}
+                    </div>
                     <p className="text-sm">{award.description}</p>
                   </CardDescription>
                 </CardHeader>
@@ -498,5 +589,5 @@ export default function AcademicsPage() {
         </section>
       </main>
     </div>
-  )
+  );
 }
