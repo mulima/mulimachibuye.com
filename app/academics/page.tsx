@@ -66,8 +66,9 @@ const publications = [
     abstract:
       "To achieve true artificial intelligence would be to mimic the human brain. " +
       "Some have espoused that current systems that we call AI today are nothing more than if-else statements. There are other arguments that state that indeed, the act of decision making itself is a bunch of nested if-else statements. However, we note that the human brain and through processes that are far more complicated than that has levels of cognition that far outweigh those of any machines that have been made today. While computing systems perform better at certain tasks than human beings do, they remain inherently specific. Human minds are generally creative and knowledge making entities. In this paper, we explore the current progress made towards achieving Artificial General Intelligence and look at it from the angle of Hyperdimensional Computing and Vector Symbolic Architectures both running with the power of quantum computing. We explain how the achievement of AGI will lead to a much more sustainable form of industrial development as has been touted through advancements towards the Fourth Industrial Revolution.",
-    doi: "10.1109/ICDCS.2023.1234567",
-    pdfUrl: "#",
+    doi: "10.33260/zictjournal.v7i2.265",
+    pdfUrl:
+      "https://ictjournal.icict.org.zm/index.php/zictjournal/article/view/265/117",
     citations: 15,
   },
   {
@@ -169,7 +170,7 @@ const education = [
     institution: "University of Zambia",
     location: "Lusaka, ZM",
     duration: "2004 - 2008",
-    honors: "Summa Cum Laude, Phi Beta Kappa",
+    honors: "Graduated with Merit",
   },
 ];
 
@@ -218,7 +219,8 @@ export default function AcademicsPage() {
                 My Blog
               </Link>
               <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                Thoughts on code, life, and everything in between
+                Thougths on tech, science, life, philosophy and everything in
+                between
               </p>
             </div>
             <nav className="hidden md:flex space-x-8">

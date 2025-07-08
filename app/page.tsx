@@ -1,8 +1,14 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Calendar, Clock, ArrowRight } from "lucide-react"
-import Link from "next/link"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Calendar, Clock, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 // Mock blog posts data - in a real app, this would come from a CMS or markdown files
 const blogPosts = [
@@ -46,23 +52,33 @@ const blogPosts = [
     category: "Tools",
     slug: "vscode-to-neovim",
   },
-]
+];
 
-const categories = ["Web Development", "Programming", "Technology", "Tools", "Personal"]
+const categories = [
+  "Web Development",
+  "Programming",
+  "Technology",
+  "Tools",
+  "Personal",
+];
 
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900">
       {/* Header */}
       <header className="border-b bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div>
-              <Link href="/" className="text-2xl font-bold text-slate-900 dark:text-white">
+              <Link
+                href="/"
+                className="text-2xl font-bold text-slate-900 dark:text-white"
+              >
                 My Blog
               </Link>
               <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
-                Thoughts on code, life, and everything in between
+                Thougths on tech, science, life, philosophy and everything in
+                between
               </p>
             </div>
             <nav className="hidden md:flex space-x-8">
@@ -80,7 +96,7 @@ export default function HomePage() {
               </Link>
               <Link
                 href="/academics"
-                className="text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors"
+                className="text-slate-900 dark:text-white font-medium"
               >
                 Academics
               </Link>
@@ -99,10 +115,13 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="mb-16">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">Welcome to My Blog</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+              Welcome to My Blog
+            </h1>
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-              I write about web development, programming, technology, and my journey as a software engineer. Join me as
-              I share insights, tutorials, and thoughts from the world of tech.
+              I write about science and technlogy, life, philosopy, programming,
+              technology, and my journey as a systems engineer. Join me as I
+              share insights, tutorials, and thoughts from the world of tech.
             </p>
           </div>
         </section>
@@ -124,7 +143,9 @@ export default function HomePage() {
 
         {/* Featured Post */}
         <section className="mb-16">
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-8">Latest Post</h2>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-8">
+            Latest Post
+          </h2>
           <Card className="hover:shadow-lg transition-shadow border-l-4 border-l-blue-500">
             <CardHeader>
               <div className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-400 mb-2">
@@ -150,7 +171,9 @@ export default function HomePage() {
                   {blogPosts[0].title}
                 </Link>
               </CardTitle>
-              <CardDescription className="text-base leading-relaxed">{blogPosts[0].excerpt}</CardDescription>
+              <CardDescription className="text-base leading-relaxed">
+                {blogPosts[0].excerpt}
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <Link href={`/blog/${blogPosts[0].slug}`}>
@@ -165,7 +188,9 @@ export default function HomePage() {
 
         {/* Recent Posts */}
         <section>
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-8">Recent Posts</h2>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-8">
+            Recent Posts
+          </h2>
           <div className="space-y-8">
             {blogPosts.slice(1).map((post) => (
               <Card key={post.id} className="hover:shadow-md transition-shadow">
@@ -193,11 +218,16 @@ export default function HomePage() {
                       {post.title}
                     </Link>
                   </CardTitle>
-                  <CardDescription className="leading-relaxed">{post.excerpt}</CardDescription>
+                  <CardDescription className="leading-relaxed">
+                    {post.excerpt}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <Link href={`/blog/${post.slug}`}>
-                    <Button variant="ghost" className="group p-0 h-auto font-medium">
+                    <Button
+                      variant="ghost"
+                      className="group p-0 h-auto font-medium"
+                    >
                       Read More
                       <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                     </Button>
@@ -210,9 +240,12 @@ export default function HomePage() {
 
         {/* Newsletter Signup */}
         <section className="mt-16 bg-slate-50 dark:bg-slate-800 rounded-lg p-8 text-center">
-          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Stay Updated</h3>
+          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+            Stay Updated
+          </h3>
           <p className="text-slate-600 dark:text-slate-300 mb-6">
-            Get notified when I publish new posts. No spam, unsubscribe at any time.
+            Get notified when I publish new posts. No spam, unsubscribe at any
+            time.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
             <input
@@ -230,19 +263,26 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
-              <h4 className="font-bold text-slate-900 dark:text-white mb-4">About</h4>
+              <h4 className="font-bold text-slate-900 dark:text-white mb-4">
+                About
+              </h4>
               <p className="text-slate-600 dark:text-slate-300 text-sm">
-                A personal blog about web development, programming, and technology. Sharing knowledge and experiences
-                from my journey as a software engineer.
+                A personal blog about web development, programming, and
+                technology. Sharing knowledge and experiences from my journey as
+                a systems engineer.
               </p>
             </div>
             <div>
-              <h4 className="font-bold text-slate-900 dark:text-white mb-4">Categories</h4>
+              <h4 className="font-bold text-slate-900 dark:text-white mb-4">
+                Categories
+              </h4>
               <ul className="space-y-2 text-sm">
                 {categories.slice(0, 4).map((category) => (
                   <li key={category}>
                     <Link
-                      href={`/category/${category.toLowerCase().replace(" ", "-")}`}
+                      href={`/category/${category
+                        .toLowerCase()
+                        .replace(" ", "-")}`}
                       className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
                     >
                       {category}
@@ -252,11 +292,13 @@ export default function HomePage() {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-slate-900 dark:text-white mb-4">Connect</h4>
+              <h4 className="font-bold text-slate-900 dark:text-white mb-4">
+                Connect
+              </h4>
               <ul className="space-y-2 text-sm">
                 <li>
                   <a
-                    href="mailto:hello@example.com"
+                    href="mailto:hello@mulimachibuye.com"
                     className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
                   >
                     Email
@@ -264,7 +306,7 @@ export default function HomePage() {
                 </li>
                 <li>
                   <a
-                    href="https://twitter.com/yourusername"
+                    href="https://twitter.com/mulimac"
                     className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
                   >
                     Twitter
@@ -272,7 +314,7 @@ export default function HomePage() {
                 </li>
                 <li>
                   <a
-                    href="https://github.com/yourusername"
+                    href="https://github.com/mulima"
                     className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors"
                   >
                     GitHub
@@ -282,10 +324,10 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t mt-8 pt-8 text-center text-slate-600 dark:text-slate-300 text-sm">
-            <p>&copy; 2024 My Blog. All rights reserved.</p>
+            <p>&copy; 2025 Mulima Chibuye. All rights reserved.</p>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }
