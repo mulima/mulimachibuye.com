@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,6 +10,37 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
+import NavMenu from "@/components/NavMenu";
+
+export const metadata = {
+  title: "My Blog – Mulima Chibuye",
+  description:
+    "Thoughts on tech, science, life, philosophy, and everything in between.",
+  openGraph: {
+    title: "My Blog – Mulima Chibuye",
+    description:
+      "Thoughts on tech, science, life, philosophy, and everything in between.",
+    url: "https://www.mulimachibuye.com",
+    siteName: "My Blog",
+    images: [
+      {
+        url: "/public/images/mulima_001.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "My Blog – Mulima Chibuye",
+    description:
+      "Thoughts on tech, science, life, philosophy, and everything in between.",
+    images: ["/og-image.png"],
+  },
+};
 
 // Mock blog posts data - in a real app, this would come from a CMS or markdown files
 const blogPosts = [
@@ -63,6 +95,8 @@ const categories = [
 ];
 
 export default function HomePage() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900">
       {/* Header */}
@@ -81,36 +115,20 @@ export default function HomePage() {
                 between
               </p>
             </div>
-            <nav className="hidden md:flex space-x-8">
-              <Link
-                href="/"
-                className="text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors"
-              >
-                Home
-              </Link>
-              <Link
-                href="/about"
-                className="text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors"
-              >
-                About
-              </Link>
-              <Link
-                href="/academics"
-                className="text-slate-900 dark:text-white font-medium"
-              >
-                Academics
-              </Link>
-              <Link
-                href="/archive"
-                className="text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors"
-              >
-                Archive
-              </Link>
-            </nav>
+            {/* Desktop Nav  */}
+            <NavMenu orientation="horizontal" className="hidden md:flex" />
+            {/* Mobile Nav (inside mobile menu) */}
           </div>
         </div>
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white dark:bg-slate-900 border-t">
+            <NavMenu
+              orientation="vertical"
+              onLinkClick={() => setMobileMenuOpen(false)}
+            />
+          </div>
+        )}
       </header>
-
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <section className="mb-16">
