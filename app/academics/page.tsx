@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -19,8 +22,64 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-// Mock academic data - replace with your actual academic work
-const publications = [
+interface Publication {
+  id: number;
+  title: string;
+  authors: string;
+  venue: string;
+  year: string;
+  type: string;
+  status: string;
+  abstract: string | null;
+  doi: string | null;
+  pdf_url: string | null;
+  citations: number;
+}
+
+interface ResearchProject {
+  id: number;
+  title: string;
+  description: string;
+  duration: string;
+  role: string;
+  funding: string | null;
+  collaborators: string | null;
+  technologies: string | null;
+  status: string;
+}
+
+interface Presentation {
+  id: number;
+  title: string;
+  event: string;
+  location: string;
+  date: string;
+  type: string;
+  slides_url: string | null;
+}
+
+interface Education {
+  id: number;
+  degree: string;
+  institution: string;
+  location: string;
+  duration: string;
+  thesis: string | null;
+  advisor: string | null;
+  gpa: string | null;
+  honors: string | null;
+}
+
+interface Award {
+  id: number;
+  title: string;
+  organization: string;
+  year: string;
+  description: string | null;
+}
+
+// Fallback data for when API is not available
+const fallbackPublications = [
   {
     id: 1,
     title:
@@ -205,6 +264,43 @@ const awards = [
 ];
 
 export default function AcademicsPage() {
+  const [publications, setPublications] = useState<Publication[]>([]);
+  const [researchProjects, setResearchProjects] = useState<ResearchProject[]>([]);
+  const [presentations, setPresentations] = useState<Presentation[]>([]);
+  const [education, setEducation] = useState<Education[]>([]);
+  const [awards, setAwards] = useState<Award[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchAcademicData();
+  }, []);
+
+  const fetchAcademicData = async () => {
+    try {
+      const response = await fetch('/api/academics');
+      if (response.ok) {
+        const data = await response.json();
+        setPublications(data.publications || []);
+        setResearchProjects(data.researchProjects || []);
+        setPresentations(data.presentations || []);
+        setEducation(data.education || []);
+        setAwards(data.awards || []);
+      }
+    } catch (error) {
+      console.error('Error fetching academic data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-900">
+        <p className="text-slate-600 dark:text-slate-400">Loading academic content...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900">
       {/* Header */}
@@ -399,17 +495,7 @@ export default function AcademicsPage() {
                   <CardDescription>
                     <div className="mb-2">
                       <span className="font-medium">Authors: </span>
-                      {pub.authors.map((author, index) => (
-                        <span
-                          key={index}
-                          className={
-                            author === "Your Name" ? "font-semibold" : ""
-                          }
-                        >
-                          {author}
-                          {index < pub.authors.length - 1 ? ", " : ""}
-                        </span>
-                      ))}
+                      {pub.authors}
                     </div>
                     <div className="mb-3">
                       <span className="font-medium">Published in: </span>
@@ -434,16 +520,18 @@ export default function AcademicsPage() {
                         </a>
                       </Button>
                     )}
-                    <Button variant="outline" size="sm" asChild>
-                      <a
-                        href={pub.pdfUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Download className="w-4 h-4 mr-2" />
-                        PDF
-                      </a>
-                    </Button>
+                    {pub.pdf_url && (
+                      <Button variant="outline" size="sm" asChild>
+                        <a
+                          href={pub.pdf_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Download className="w-4 h-4 mr-2" />
+                          PDF
+                        </a>
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -487,22 +575,26 @@ export default function AcademicsPage() {
                     <span className="font-medium text-sm">Funding: </span>
                     <span className="text-sm">{project.funding}</span>
                   </div>
-                  <div>
-                    <span className="font-medium text-sm">Collaborators: </span>
-                    <span className="text-sm">
-                      {project.collaborators.join(", ")}
-                    </span>
-                  </div>
-                  <div>
-                    <span className="font-medium text-sm">Technologies: </span>
-                    <div className="flex flex-wrap gap-1 mt-1">
-                      {project.technologies.map((tech) => (
-                        <Badge key={tech} variant="outline" className="text-xs">
-                          {tech}
-                        </Badge>
-                      ))}
+                  {project.collaborators && (
+                    <div>
+                      <span className="font-medium text-sm">Collaborators: </span>
+                      <span className="text-sm">
+                        {project.collaborators}
+                      </span>
                     </div>
-                  </div>
+                  )}
+                  {project.technologies && (
+                    <div>
+                      <span className="font-medium text-sm">Technologies: </span>
+                      <div className="flex flex-wrap gap-1 mt-1">
+                        {project.technologies.split(',').map((tech: string, idx: number) => (
+                          <Badge key={idx} variant="outline" className="text-xs">
+                            {tech.trim()}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             ))}
@@ -542,16 +634,18 @@ export default function AcademicsPage() {
                         </div>
                       </CardDescription>
                     </div>
-                    <Button variant="outline" size="sm" asChild>
-                      <a
-                        href={pres.slidesUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Download className="w-4 h-4 mr-2" />
-                        Slides
-                      </a>
-                    </Button>
+                    {pres.slides_url && (
+                      <Button variant="outline" size="sm" asChild>
+                        <a
+                          href={pres.slides_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Download className="w-4 h-4 mr-2" />
+                          Slides
+                        </a>
+                      </Button>
+                    )}
                   </div>
                 </CardHeader>
               </Card>

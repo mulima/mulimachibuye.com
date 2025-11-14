@@ -6,7 +6,7 @@ import Link from "next/link";
 // Mock blog post data - in a real app, this would come from a CMS or markdown files
 const blogPost = {
   title: "Getting Started with Next.js 15: A Complete Guide",
-  date: "2024-01-15",
+  date: "2025-07-12",
   readTime: "8 min read",
   category: "Web Development",
   content: `
@@ -155,7 +155,7 @@ export default function BlogPostPage() {
                     Author Name
                   </p>
                   <p className="text-sm text-slate-600 dark:text-slate-400">
-                    Software Engineer
+                    Mulima Chibuye
                   </p>
                 </div>
               </div>
@@ -216,6 +216,21 @@ export default function BlogPostPage() {
 
 // Import your blog posts data
 const blogPosts = [
+  {
+    slug: "my-first-book",
+    title: "My First Book: A Journey into Writing",
+    date: "2025-07-12",
+    readTime: "8 min read",
+    category: "Writing",
+    author: {
+      name: "Mulima Chibuye",
+      bio: "I'm a full-stack developer passionate about building great software and sharing knowledge. When I'm not coding, you'll find me writing blog posts or contributing to open source projects.",
+      twitter: "https://twitter.com/yourusername",
+    },
+    content: `
+
+    `,
+  },
   {
     slug: "getting-started-nextjs-15",
     // ...other fields
